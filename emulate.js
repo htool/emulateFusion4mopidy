@@ -104,7 +104,7 @@ function sendConfig () {
 }
 
 function sendSystemConfig () {
-  PGN = "%s,6,130579,%s,255,5,a3,99,b1,ff"
+  PGN = "%s,6,130579,%s,255,5,a3,99,71,ff"
   PGN = util.format(PGN, (new Date()).toISOString(), canbus.candevice.address);
   debug('Sending system config PGN 130579: %j', PGN);
   canbus.sendPGN(PGN);
