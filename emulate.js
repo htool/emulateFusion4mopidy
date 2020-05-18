@@ -87,13 +87,15 @@ function sourceSelection (source) {
 }
 
 function power (power_state) {
-  // 7,130820,12,255,5,a3,99,20,80,02
-  //PowerPGN = "%s,7,130820,%s,255,5,a3,99,20,80,02"
-  PowerPGN = "%s,7,130820,%s,255,5,a3,99,1c,00,01"
+  PowerPGN = "%s,7,130820,%s,255,5,a3,99,20,80,02"
   PowerPGN = util.format(PowerPGN, (new Date()).toISOString(), canbus.candevice.address);
   debug('Sending PowerPGN %j', PowerPGN);
   canbus.sendPGN(PowerPGN);
-  startup();
+
+  PowerPGN = "%s,6,126720,%s,255,5,a3,99,1c,00,01"
+  PowerPGN = util.format(PowerPGN, (new Date()).toISOString(), canbus.candevice.address);
+  debug('Sending PowerPGN2 %j', PowerPGN);
+  canbus.sendPGN(PowerPGN);
 }
 
 function sendConfig () {
@@ -235,7 +237,7 @@ switch (emulate) {
       setInterval(status, 500) // Send status
       setTimeout(power, 10000) // Once at startup
       // setTimeout(sourceSelection, 11000) // Once at startup
-      setTimeout(startup, 11000) // Once at startup
+      setInterval(startup, 1000) // Once at startup
 
 	    break;
 }
