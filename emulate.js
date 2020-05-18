@@ -88,7 +88,8 @@ function sourceSelection (source) {
 
 function power (power_state) {
   // 7,130820,12,255,5,a3,99,20,80,02
-  PowerPGN = "%s,7,130820,%s,255,5,a3,99,20,80,02"
+  //PowerPGN = "%s,7,130820,%s,255,5,a3,99,20,80,02"
+  PowerPGN = "%s,7,130820,%s,255,5,a3,99,1c,00,01"
   PowerPGN = util.format(PowerPGN, (new Date()).toISOString(), canbus.candevice.address);
   debug('Sending PowerPGN %j', PowerPGN);
   canbus.sendPGN(PowerPGN);
@@ -159,7 +160,8 @@ async function startup () {
                         "%s,7,130820,%s,255,14,a3,99,02,80,08,0b,04,04,04,69,50,6f,64,00",
                         "%s,7,130820,%s,255,16,a3,99,02,80,09,0b,04,04,06,69,50,6f,64,20,32,00",
                         "%s,7,130820,%s,255,13,a3,99,02,80,0a,0b,09,04,03,4d,54,50,00",
-                        "%s,7,130820,%s,255,12,a3,99,02,80,0b,0b,0a,15,02,42,54,00"
+                        "%s,7,130820,%s,255,12,a3,99,02,80,0b,0b,0a,15,02,42,54,00",
+                        "%s,7,130820,%s,255,13,a3,99,02,80,0c,0b,0e,00,03,44,41,42,00"
 ];
   for (var nr in StartupPGNs) {
     PGN = util.format(StartupPGNs[nr], (new Date()).toISOString(), canbus.candevice.address)
@@ -302,12 +304,13 @@ function mainLoop () {
             // debug("Got PGN 126720: %j", stateRequest)
             if (stateRequest.match(/04,a3,99,01,00,ff,ff/)) {
  //             requestState();
-              setSource();
-              setUnitName();
-              setTransport();
-              setMediaControl();
-              setZoneVolume();
-              setAllVolume();
+              startup();
+              // setSource();
+              // setUnitName();
+              // setTransport();
+              // setMediaControl();
+              // setZoneVolume();
+              // setAllVolume();
             }
           }
           break;
