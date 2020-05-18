@@ -110,6 +110,13 @@ function sendSystemConfig () {
   canbus.sendPGN(PGN);
 }
 
+function send130847 () {
+  PGN = "%s,6,59392,%s,%s,8,01,ff,ff,ff,ff,1f,ff,01"
+  PGN = util.format(PGN, (new Date()).toISOString(), canbus.candevice.address, msg.pgn.src);
+  debug('Sending ISO group PGN 130847: %j', PGN);
+  canbus.sendPGN(PGN);
+}
+
 async function startup () {
   debug('Sending Startup PGNs');
   StartupPGNs = [
@@ -172,6 +179,13 @@ function requestState () {
   canbus.sendPGN(requestStatePGN);
   state_count = state_count + 1
 }
+2020-05-13T14:58:44.491Z,6,60928,12,255,8,bf,29,61,34,00,82,fa,c0
+
+function status () {
+  statusPGN = "%s,6,60928,12,255,8,bf,29,61,34,00,82,fa,c0"
+  statusPGN = util.format(statusPGN, (new Date()).toISOString(), canbus.candevice.address, 255);
+  canbus.sendPGN(statusPGN);
+}
 
 function setTransport () {
   setTransportPGN = "%s,7,130820,%s,%s,5,a3,99,20,00,01" // Paused
@@ -215,6 +229,7 @@ switch (emulate) {
 	case 'Fusion':
 	    debug('Emulate: Fusion UD-650');
       // setInterval(heartbeat, 60000) // Heart beat PGN
+      setInterval(status, 5000) // Send status
       // setTimeout(power, 10000) // Once at startup
       // setTimeout(sourceSelection, 11000) // Once at startup
       setTimeout(startup, 11000) // Once at startup
@@ -237,8 +252,10 @@ function mainLoop () {
         msg.pgn.fields.PGN = PGN;
         if (PGN == 126998) {  // testing...
           sendConfig();
-        } else if (PGN == 130579){
+        } else if (PGN == 130579) {
           sendSystemConfig();
+        } else if (PGN == 130847) {
+          send130847();
         } else {
           canbus.candevice.n2kMessage(msg.pgn);
         }
