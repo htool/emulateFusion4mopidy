@@ -233,7 +233,7 @@ switch (emulate) {
 	    debug('Emulate: Fusion UD-650');
       // setInterval(heartbeat, 60000) // Heart beat PGN
       setInterval(status, 500) // Send status
-      // setTimeout(power, 10000) // Once at startup
+      setTimeout(power, 10000) // Once at startup
       // setTimeout(sourceSelection, 11000) // Once at startup
       setTimeout(startup, 11000) // Once at startup
 
