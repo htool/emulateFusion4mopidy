@@ -179,7 +179,6 @@ function requestState () {
   canbus.sendPGN(requestStatePGN);
   state_count = state_count + 1
 }
-2020-05-13T14:58:44.491Z,6,60928,12,255,8,bf,29,61,34,00,82,fa,c0
 
 function status () {
   statusPGN = "%s,6,60928,12,255,8,bf,29,61,34,00,82,fa,c0"
