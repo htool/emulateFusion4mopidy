@@ -87,10 +87,10 @@ function sourceSelection (source) {
 }
 
 function power (power_state) {
-  PowerPGN = "%s,6,126720,%s,255,5,a3,99,1c,00,01"
-  PowerPGN = util.format(PowerPGN, (new Date()).toISOString(), canbus.candevice.address);
-  debug('Sending PowerPGN2 %j', PowerPGN);
-  canbus.sendPGN(PowerPGN);
+  // PowerPGN = "%s,6,126720,%s,255,5,a3,99,1c,00,01"
+  // PowerPGN = util.format(PowerPGN, (new Date()).toISOString(), canbus.candevice.address);
+  // debug('Sending PowerPGN2 %j', PowerPGN);
+  // canbus.sendPGN(PowerPGN);
 
   PowerPGN = "%s,7,130820,%s,255,5,a3,99,20,80,01"
   PowerPGN = util.format(PowerPGN, (new Date()).toISOString(), canbus.candevice.address);
@@ -122,6 +122,7 @@ function send130847 () {
 
 async function startup () {
   debug('Sending Startup PGNs');
+  power();
   StartupPGNs = [
                         "%s,7,130820,%s,255,12,a3,99,01,80,01,00,17,00,02,00,09,01",
                         "%s,7,130820,%s,255,12,a3,99,21,80,06,46,55,53,49,4f,4e,00",
