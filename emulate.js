@@ -281,7 +281,7 @@ function mainLoop () {
           } else if (msg.pgn.pgn == 126720 && msg.pgn.dst == deviceAddress) { // Fusion PGN
             stateRequest = buf2hex(msg.data).slice(1); // Skip multipart byte
             stateRequest = stateRequest.join(',');
-            debug("Got PGN 126720: %j", msg)
+            debug("Got PGN 126720: %j", stateRequest)
             if (stateRequest.match(/04,a3,99,01,00,ff,ff/)) {
  //             requestState();
               setTransport();
