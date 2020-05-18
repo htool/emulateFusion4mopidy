@@ -308,12 +308,12 @@ function mainLoop () {
             if (stateRequest.match(/04,a3,99,01,00,ff,ff/)) {
  //             requestState();
               startup();
-              // setSource();
-              // setUnitName();
-              // setTransport();
-              // setMediaControl();
-              // setZoneVolume();
-              // setAllVolume();
+              setSource();
+              setUnitName();
+              setTransport();
+              setMediaControl();
+              setZoneVolume();
+              setAllVolume();
             }
           }
           break;
