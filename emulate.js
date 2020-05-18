@@ -180,8 +180,10 @@ function requestState () {
   state_count = state_count + 1
 }
 
+
 function status () {
-  statusPGN = "%s,6,60928,12,255,8,bf,29,61,34,00,82,fa,c0"
+  // statusPGN = "%s,6,60928,12,255,8,bf,29,61,34,00,82,fa,c0"
+  statusPGN = "%s,7,130820,%s,255,9,a3,99,09,80,0b,ee,3d,03,00"
   statusPGN = util.format(statusPGN, (new Date()).toISOString(), canbus.candevice.address, 255);
   canbus.sendPGN(statusPGN);
 }
@@ -228,7 +230,7 @@ switch (emulate) {
 	case 'Fusion':
 	    debug('Emulate: Fusion UD-650');
       // setInterval(heartbeat, 60000) // Heart beat PGN
-      setInterval(status, 5000) // Send status
+      setInterval(status, 500) // Send status
       // setTimeout(power, 10000) // Once at startup
       // setTimeout(sourceSelection, 11000) // Once at startup
       setTimeout(startup, 11000) // Once at startup
