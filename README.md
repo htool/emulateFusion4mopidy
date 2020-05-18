@@ -1,2 +1,2 @@
-# emulateFusion4mopidy
-Emulate a Fusion device to control mopidy
+# SonicHub emulation for Modipy
+Emulate a Lowrance SonicHub to use B&G MFD (like Vulcan/Zeus) as interface for Mopidy
