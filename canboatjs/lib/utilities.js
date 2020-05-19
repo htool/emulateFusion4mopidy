@@ -19,7 +19,7 @@ const { keys, map, padCharsStart, trimChars } = require('lodash/fp')
 
 function getPlainPGNs(buffer) {
   var res = []
-  var bucket = 0x00 // 64
+  var bucket = 0x40 // 64
   var pad = 0xff
 
   var first = new Buffer(8)
