@@ -24,10 +24,6 @@ function getPlainPGNs(buffer) {
 
   var first = new Buffer(8)
   first.writeUInt8(bucket++, 0)
-  first.writeUInt8(pad, 4)
-  first.writeUInt8(pad, 5)
-  first.writeUInt8(pad, 6)
-  first.writeUInt8(pad, 7)
 
   first.writeUInt8(buffer.length, 1)
   buffer.copy(first, 2, 0, 6)
@@ -39,7 +35,7 @@ function getPlainPGNs(buffer) {
     var end = index+7
     var fill = 0
     if ( end > buffer.length ) {
-      fill = end - buffer.length 
+      fill = end - buffer.length
       end = buffer.length + 1
     }
     buffer.copy(next, 1, index, end)
