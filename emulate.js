@@ -122,7 +122,6 @@ function send130847 () {
 
 async function startup () {
   debug('Sending Startup PGNs');
-  power();
   StartupPGNs = [
                         "%s,7,130820,%s,255,12,a3,99,01,80,01,00,17,00,02,00,09,01",
                         "%s,7,130820,%s,255,12,a3,99,21,80,06,46,55,53,49,4f,4e,00",
@@ -238,7 +237,7 @@ switch (emulate) {
       setInterval(status, 500) // Send status
       setTimeout(power, 10000) // Once at startup
       // setTimeout(sourceSelection, 11000) // Once at startup
-      setInterval(startup, 1000) // Once at startup
+      // setInterval(startup, 1000) // Once at startup
 
 	    break;
 }
@@ -308,13 +307,13 @@ function mainLoop () {
             if (stateRequest.match(/04,a3,99,01,00,ff,ff/)) {
  //             requestState();
               startup();
-              sourceSelection();
-              setSource();
-              setUnitName();
-              setTransport();
-              setMediaControl();
-              setZoneVolume();
-              setAllVolume();
+              // sourceSelection();
+              // setSource();
+              // setUnitName();
+              // setTransport();
+              // setMediaControl();
+              // setZoneVolume();
+              // setAllVolume();
             }
           }
           break;
