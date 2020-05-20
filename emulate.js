@@ -122,7 +122,7 @@ function send130847 () {
 }
 
 async function startup () {
-  debug('Sending Startup PGNs');
+  debug('Sending Startup PGNs %d', controlByte);
   StartupPGNs = [
                         "%s,7,130820,%s,255,12,a3,99,01,%s,01,00,17,00,02,00,09,01",
                         "%s,7,130820,%s,255,12,a3,99,21,%s,06,46,55,53,49,4f,4e,00",
