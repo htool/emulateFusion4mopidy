@@ -80,7 +80,8 @@ function heartbeat () {
 }
 
 function sourceSelection (source) {
-  SourcePGN = "%s,7,130820,%s,255,12,a3,99,02,80,0b,0b,0a,05,02,42,54,00"
+  // SourcePGN = "%s,7,130820,%s,255,12,a3,99,02,80,0b,0b,0a,05,02,42,54,00"
+  SourcePGN = "%s,7,130820,%s,255,12,a3,99,02,80,0b,0b,0a,25,02,42,54,00"
   SourcePGN = util.format(SourcePGN, (new Date()).toISOString(), canbus.candevice.address);
   debug('Sending SourcePGN %j', SourcePGN);
   canbus.sendPGN(SourcePGN);
