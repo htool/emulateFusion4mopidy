@@ -308,7 +308,7 @@ function mainLoop () {
             if (stateRequest.match(/04,a3,99,01,00,ff,ff/)) {
  //             requestState();
               startup();
-              // sourceSelection();
+              sourceSelection();
               // setSource();
               // setUnitName();
               // setTransport();
